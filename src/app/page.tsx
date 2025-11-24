@@ -1,65 +1,124 @@
-import Image from "next/image";
+// Route: / (Home Page)
+"use client";
+import React, {useState} from "react";
+import {useRouter} from "next/navigation";
+import TeamSearch from "@/components/TeamSearch";
 
-export default function Home() {
+export default function Home(): React.JSX.Element {
+  const [homeTeam, setHomeTeam] = useState<string>("");
+  const [awayTeam, setAwayTeam] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const router = useRouter();
+
+  const handlePredict = (): void => {
+    if (homeTeam && awayTeam) {
+      setIsLoading(true);
+      router.push(
+        `/results?home=${encodeURIComponent(
+          homeTeam
+        )}&away=${encodeURIComponent(awayTeam)}`
+      );
+    }
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="max-w-6xl mx-auto w-full">
+      {/* Hero Section */}
+      <div className="text-center mb-8 space-y-3">
+        <h1 className="text-7xl font-black gold-text-gradient leading-tight drop-shadow-2xl">
+          PredictX
+        </h1>
+        <p className="text-gray-300 text-lg font-medium tracking-wide">
+          Advanced AI-Powered Match Outcome Predictions
+        </p>
+      </div>
+
+      {/* Main Card */}
+      <div className="luxury-card p-10">
+        <div className="text-center mb-6">
+          <h2 className="text-2xl font-bold gold-text-gradient mb-1">
+            Select Teams
+          </h2>
+          <p className="text-gray-400 text-sm">
+            Choose two teams to generate your prediction
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+
+        <div className="grid md:grid-cols-2 gap-8 mb-8">
+          {/* Home Team */}
+          <div className="space-y-3">
+            <label className="text-gold-400 font-bold text-lg flex items-center gap-2">
+              <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center shadow-lg border border-gold-500/50">
+                <svg
+                  className="w-5 h-5 text-gold-400"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                </svg>
+              </div>
+              <span>Home Team</span>
+            </label>
+            <TeamSearch
+              value={homeTeam}
+              onChange={setHomeTeam}
+              placeholder="Search home team..."
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
+
+          {/* Away Team */}
+          <div className="space-y-3">
+            <label className="text-gold-400 font-bold text-lg flex items-center gap-2">
+              <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center shadow-lg border border-gold-500/50">
+                <svg
+                  className="w-5 h-5 text-gold-400"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                </svg>
+              </div>
+              <span>Away Team</span>
+            </label>
+            <TeamSearch
+              value={awayTeam}
+              onChange={setAwayTeam}
+              placeholder="Search away team..."
+            />
+          </div>
         </div>
-      </main>
+
+        {/* Predict Button */}
+        <button
+          onClick={handlePredict}
+          disabled={!homeTeam || !awayTeam || isLoading}
+          className="luxury-button w-full text-lg py-4 relative overflow-hidden group"
+        >
+          <span className="relative z-10 flex items-center justify-center gap-3 font-bold">
+            {isLoading ? (
+              <>
+                <div className="w-5 h-5 border-3 border-black border-t-transparent rounded-full animate-spin" />
+                <span>Analyzing...</span>
+              </>
+            ) : (
+              <>
+                <span className="text-2xl group-hover:scale-110 transition-transform">
+                  ⚡
+                </span>
+                <span>Generate Prediction</span>
+              </>
+            )}
+          </span>
+          <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 transition-opacity" />
+        </button>
+
+        {/* Info Text */}
+        {!homeTeam || !awayTeam ? (
+          <p className="text-center text-gray-500 text-xs mt-4">
+            Select both teams to continue
+          </p>
+        ) : null}
+      </div>
     </div>
   );
 }

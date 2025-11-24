@@ -1,26 +1,204 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-gold-300: 255 223 128;
+    --color-gold-400: 255 215 0;
+    --color-gold-500: 212 175 55;
+    --color-gold-600: 184 134 11;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .luxury-card {
+    background: linear-gradient(
+      to bottom right,
+      rgb(0 0 0),
+      rgb(23 23 23),
+      rgb(0 0 0)
+    );
+    border: 2px solid rgb(212 175 55 / 0.3);
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgb(212 175 55 / 0.1);
+    backdrop-filter: blur(4px);
+  }
+
+  .luxury-button {
+    background: linear-gradient(
+      to right,
+      rgb(212 175 55),
+      rgb(255 215 0),
+      rgb(212 175 55)
+    );
+    color: rgb(0 0 0);
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgb(212 175 55 / 0.5);
+    border: 1px solid rgb(184 134 11);
+    transition: all 0.3s;
+  }
+
+  .luxury-button:hover {
+    box-shadow: 0 10px 15px -3px rgb(212 175 55 / 0.7);
+    transform: scale(1.05);
+  }
+
+  .luxury-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .luxury-button:disabled:hover {
+    transform: scale(1);
+  }
+
+  .luxury-input {
+    background: rgb(0 0 0 / 0.6);
+    border: 2px solid rgb(212 175 55 / 0.4);
+    color: rgb(255 255 255);
+    border-radius: 0.75rem;
+    padding: 1rem 1.5rem;
+    outline: none;
+    transition: all 0.3s;
+    box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  }
+
+  .luxury-input::placeholder {
+    color: rgb(107 114 128);
+  }
+
+  .luxury-input:focus {
+    border-color: rgb(212 175 55);
+    box-shadow: 0 0 0 4px rgb(212 175 55 / 0.2);
+  }
+
+  .luxury-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 0.5rem;
+    background: linear-gradient(to bottom, rgb(23 23 23), rgb(0 0 0));
+    border: 2px solid rgb(212 175 55 / 0.4);
+    border-radius: 0.75rem;
+    box-shadow: 0 25px 50px -12px rgb(212 175 55 / 0.2);
+    max-height: 16rem;
+    overflow-y: auto;
+    z-index: 50;
+    backdrop-filter: blur(12px);
+  }
+
+  .luxury-dropdown-item {
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-bottom: 1px solid rgb(212 175 55 / 0.1);
+  }
+
+  .luxury-dropdown-item:last-child {
+    border-bottom: 0;
+  }
+
+  .luxury-dropdown-item:hover {
+    background: rgb(212 175 55 / 0.2);
+  }
+
+  .progress-bar-luxury {
+    height: 2rem;
+    background: linear-gradient(to bottom, rgb(23 23 23), rgb(0 0 0));
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+    border: 1px solid rgb(212 175 55 / 0.2);
+  }
+
+  .progress-fill {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.875rem;
+    transition: all 1s ease-out;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  }
+
+  .gold-text-gradient {
+    background: linear-gradient(
+      to right,
+      rgb(255 215 0),
+      rgb(255 223 128),
+      rgb(255 215 0)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .luxury-glow {
+    box-shadow: 0 0 30px rgb(212 175 55 / 0.3);
+  }
+
+  .luxury-border {
+    border: 2px solid rgb(212 175 55 / 0.3);
+    transition: border-color 0.3s;
+  }
+
+  .luxury-border:hover {
+    border-color: rgb(212 175 55 / 0.6);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, rgb(212, 175, 55), rgb(184, 134, 11));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, rgb(255, 215, 0), rgb(212, 175, 55));
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  animation: shimmer 3s infinite;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(212, 175, 55, 0.3) 50%,
+    transparent 100%
+  );
+  background-size: 1000px 100%;
+}
+
+@keyframes pulse-gold {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+  }
+}
+
+.pulse-gold {
+  animation: pulse-gold 2s ease-in-out infinite;
 }
