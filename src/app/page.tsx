@@ -24,33 +24,33 @@ export default function Home(): React.JSX.Element {
   return (
     <div className="max-w-6xl mx-auto w-full">
       {/* Hero Section */}
-      <div className="text-center mb-8 space-y-3">
-        <h1 className="text-7xl font-black gold-text-gradient leading-tight drop-shadow-2xl">
+      <div className="text-center mb-6 sm:mb-8 space-y-2 sm:space-y-3 px-2">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black gold-text-gradient leading-tight drop-shadow-2xl">
           PredictX
         </h1>
-        <p className="text-gray-300 text-lg font-medium tracking-wide">
+        <p className="text-gray-300 text-sm sm:text-base md:text-lg font-medium tracking-wide px-4">
           Advanced AI-Powered Match Outcome Predictions
         </p>
       </div>
 
       {/* Main Card */}
-      <div className="luxury-card p-10">
-        <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold gold-text-gradient mb-1">
+      <div className="luxury-card p-4 sm:p-6 md:p-8 lg:p-10">
+        <div className="text-center mb-4 sm:mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold gold-text-gradient mb-1">
             Select Teams
           </h2>
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-400 text-xs sm:text-sm">
             Choose two teams to generate your prediction
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8">
           {/* Home Team */}
-          <div className="space-y-3">
-            <label className="text-gold-400 font-bold text-lg flex items-center gap-2">
-              <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center shadow-lg border border-gold-500/50">
+          <div className="space-y-2 sm:space-y-3">
+            <label className="text-gold-400 font-bold text-base sm:text-lg flex items-center gap-2">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 bg-black rounded-lg flex items-center justify-center shadow-lg border border-gold-500/50">
                 <svg
-                  className="w-5 h-5 text-gold-400"
+                  className="w-4 h-4 sm:w-5 sm:h-5 text-gold-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -67,11 +67,11 @@ export default function Home(): React.JSX.Element {
           </div>
 
           {/* Away Team */}
-          <div className="space-y-3">
-            <label className="text-gold-400 font-bold text-lg flex items-center gap-2">
-              <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center shadow-lg border border-gold-500/50">
+          <div className="space-y-2 sm:space-y-3">
+            <label className="text-gold-400 font-bold text-base sm:text-lg flex items-center gap-2">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 bg-black rounded-lg flex items-center justify-center shadow-lg border border-gold-500/50">
                 <svg
-                  className="w-5 h-5 text-gold-400"
+                  className="w-4 h-4 sm:w-5 sm:h-5 text-gold-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -92,17 +92,17 @@ export default function Home(): React.JSX.Element {
         <button
           onClick={handlePredict}
           disabled={!homeTeam || !awayTeam || isLoading}
-          className="luxury-button w-full text-lg py-4 relative overflow-hidden group"
+          className="luxury-button w-full text-base sm:text-lg py-3 sm:py-4 relative overflow-hidden group"
         >
-          <span className="relative z-10 flex items-center justify-center gap-3 font-bold">
+          <span className="relative z-10 flex items-center justify-center gap-2 sm:gap-3 font-bold">
             {isLoading ? (
               <>
-                <div className="w-5 h-5 border-3 border-black border-t-transparent rounded-full animate-spin" />
+                <div className="w-4 h-4 sm:w-5 sm:h-5 border-3 border-black border-t-transparent rounded-full animate-spin" />
                 <span>Analyzing...</span>
               </>
             ) : (
               <>
-                <span className="text-2xl group-hover:scale-110 transition-transform">
+                <span className="text-xl sm:text-2xl group-hover:scale-110 transition-transform">
                   ⚡
                 </span>
                 <span>Generate Prediction</span>

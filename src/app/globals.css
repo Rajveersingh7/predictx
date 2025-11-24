@@ -32,11 +32,17 @@
     );
     color: rgb(0 0 0);
     font-weight: 700;
-    padding: 1rem 2rem;
+    padding: 0.75rem 1.5rem;
     border-radius: 0.75rem;
     box-shadow: 0 10px 15px -3px rgb(212 175 55 / 0.5);
     border: 1px solid rgb(184 134 11);
     transition: all 0.3s;
+  }
+
+  @media (min-width: 640px) {
+    .luxury-button {
+      padding: 1rem 2rem;
+    }
   }
 
   .luxury-button:hover {
@@ -58,10 +64,18 @@
     border: 2px solid rgb(212 175 55 / 0.4);
     color: rgb(255 255 255);
     border-radius: 0.75rem;
-    padding: 1rem 1.5rem;
+    padding: 0.75rem 1rem;
     outline: none;
     transition: all 0.3s;
     box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+    font-size: 0.875rem;
+  }
+
+  @media (min-width: 640px) {
+    .luxury-input {
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+    }
   }
 
   .luxury-input::placeholder {
@@ -83,17 +97,29 @@
     border: 2px solid rgb(212 175 55 / 0.4);
     border-radius: 0.75rem;
     box-shadow: 0 25px 50px -12px rgb(212 175 55 / 0.2);
-    max-height: 16rem;
+    max-height: 12rem;
     overflow-y: auto;
     z-index: 50;
     backdrop-filter: blur(12px);
   }
 
+  @media (min-width: 640px) {
+    .luxury-dropdown {
+      max-height: 16rem;
+    }
+  }
+
   .luxury-dropdown-item {
-    padding: 0.75rem 1.5rem;
+    padding: 0.625rem 1rem;
     cursor: pointer;
     transition: all 0.2s;
     border-bottom: 1px solid rgb(212 175 55 / 0.1);
+  }
+
+  @media (min-width: 640px) {
+    .luxury-dropdown-item {
+      padding: 0.75rem 1.5rem;
+    }
   }
 
   .luxury-dropdown-item:last-child {
@@ -105,12 +131,18 @@
   }
 
   .progress-bar-luxury {
-    height: 2rem;
+    height: 1.75rem;
     background: linear-gradient(to bottom, rgb(23 23 23), rgb(0 0 0));
     border-radius: 0.75rem;
     overflow: hidden;
     box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
     border: 1px solid rgb(212 175 55 / 0.2);
+  }
+
+  @media (min-width: 640px) {
+    .progress-bar-luxury {
+      height: 2rem;
+    }
   }
 
   .progress-fill {
@@ -119,9 +151,15 @@
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     transition: all 1s ease-out;
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  }
+
+  @media (min-width: 640px) {
+    .progress-fill {
+      font-size: 0.875rem;
+    }
   }
 
   .gold-text-gradient {

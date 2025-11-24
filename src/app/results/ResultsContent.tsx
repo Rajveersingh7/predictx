@@ -57,15 +57,15 @@ export default function ResultsContent(): React.JSX.Element {
   if (loading) {
     return (
       <div className="max-w-4xl mx-auto">
-        <div className="luxury-card p-20 text-center">
-          <div className="relative inline-block mb-8">
+        <div className="luxury-card p-8 sm:p-12 md:p-16 lg:p-20 text-center">
+          <div className="relative inline-block mb-6 sm:mb-8">
             <div className="absolute inset-0 bg-gold-500/30 blur-2xl rounded-full animate-pulse" />
-            <div className="relative w-24 h-24 border-4 border-gold-500 border-t-transparent rounded-full animate-spin" />
+            <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 border-3 sm:border-4 border-gold-500 border-t-transparent rounded-full animate-spin" />
           </div>
-          <h2 className="text-3xl font-bold gold-text-gradient mb-4 animate-pulse">
+          <h2 className="text-2xl sm:text-3xl font-bold gold-text-gradient mb-3 sm:mb-4 animate-pulse px-4">
             Analyzing Match Data
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-400 text-sm sm:text-base md:text-lg px-4">
             Our AI is processing team statistics, recent form, and historical
             data...
           </p>
@@ -77,15 +77,19 @@ export default function ResultsContent(): React.JSX.Element {
   if (error) {
     return (
       <div className="max-w-3xl mx-auto">
-        <div className="luxury-card p-16 text-center">
-          <div className="text-7xl mb-6">⚠️</div>
-          <h2 className="text-3xl font-bold text-red-400 mb-4">{error}</h2>
-          <p className="text-gray-400 mb-8">
+        <div className="luxury-card p-8 sm:p-12 md:p-16 text-center">
+          <div className="text-5xl sm:text-6xl md:text-7xl mb-4 sm:mb-6">
+            ⚠️
+          </div>
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-red-400 mb-3 sm:mb-4 px-4">
+            {error}
+          </h2>
+          <p className="text-gray-400 text-sm sm:text-base mb-6 sm:mb-8 px-4">
             Please try again with different teams
           </p>
           <button
             onClick={() => router.push("/")}
-            className="luxury-button inline-flex items-center gap-2"
+            className="luxury-button inline-flex items-center gap-2 text-sm sm:text-base"
           >
             <span>←</span>
             <span>Back to Home</span>
@@ -108,48 +112,52 @@ export default function ResultsContent(): React.JSX.Element {
   return (
     <div className="max-w-5xl mx-auto">
       {/* Header */}
-      <div className="text-center mb-8">
-        <h1 className="text-6xl font-black mb-6 gold-text-gradient">
+      <div className="text-center mb-6 sm:mb-8 px-2">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6 gold-text-gradient">
           Match Prediction
         </h1>
-        <div className="flex items-center justify-center gap-4 flex-wrap">
-          <div className="luxury-card px-6 py-2">
-            <span className="text-xl font-bold text-white">{homeTeam}</span>
+        <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 flex-wrap">
+          <div className="luxury-card px-3 sm:px-4 md:px-6 py-1.5 sm:py-2">
+            <span className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white">
+              {homeTeam}
+            </span>
           </div>
-          <div className="w-12 h-12 bg-linear-to-br from-gold-500 to-gold-600 rounded-full flex items-center justify-center font-black text-base text-black shadow-lg shadow-gold-500/50 border-2 border-gold-300">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-linear-to-br from-gold-500 to-gold-600 rounded-full flex items-center justify-center font-black text-xs sm:text-sm md:text-base text-black shadow-lg shadow-gold-500/50 border-2 border-gold-300">
             VS
           </div>
-          <div className="luxury-card px-6 py-2">
-            <span className="text-xl font-bold text-white">{awayTeam}</span>
+          <div className="luxury-card px-3 sm:px-4 md:px-6 py-1.5 sm:py-2">
+            <span className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white">
+              {awayTeam}
+            </span>
           </div>
         </div>
       </div>
 
       {/* Prediction Card */}
-      <div className="luxury-card p-6">
-        <div className="space-y-5">
+      <div className="luxury-card p-4 sm:p-5 md:p-6">
+        <div className="space-y-4 sm:space-y-5">
           {/* Home Win */}
           <div>
-            <div className="flex justify-between items-center mb-2">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center shadow-lg border border-gold-500/50">
+            <div className="flex justify-between items-center mb-2 gap-2">
+              <div className="flex items-center gap-2 min-w-0 flex-1">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-black rounded-lg flex items-center justify-center shadow-lg border border-gold-500/50 shrink-0">
                   <svg
-                    className="w-5 h-5 text-gold-400"
+                    className="w-4 h-4 sm:w-5 sm:h-5 text-gold-400"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
                     <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                   </svg>
                 </div>
-                <div>
-                  <span className="font-bold text-lg text-white">
+                <div className="min-w-0">
+                  <span className="font-bold text-sm sm:text-base md:text-lg text-white truncate block">
                     {homeTeam} Win
                   </span>
                 </div>
               </div>
-              <div className="text-right">
+              <div className="text-right shrink-0">
                 <span
-                  className={`font-black text-2xl ${
+                  className={`font-black text-lg sm:text-xl md:text-2xl ${
                     prediction.homeWin === maxPercentage
                       ? "text-gold-400"
                       : "text-gray-400"
@@ -173,16 +181,18 @@ export default function ResultsContent(): React.JSX.Element {
 
           {/* Draw */}
           <div>
-            <div className="flex justify-between items-center mb-2">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">🤝</span>
-                <div>
-                  <span className="font-bold text-lg text-white">Draw</span>
+            <div className="flex justify-between items-center mb-2 gap-2">
+              <div className="flex items-center gap-2 min-w-0 flex-1">
+                <span className="text-xl sm:text-2xl shrink-0">🤝</span>
+                <div className="min-w-0">
+                  <span className="font-bold text-sm sm:text-base md:text-lg text-white">
+                    Draw
+                  </span>
                 </div>
               </div>
-              <div className="text-right">
+              <div className="text-right shrink-0">
                 <span
-                  className={`font-black text-2xl ${
+                  className={`font-black text-lg sm:text-xl md:text-2xl ${
                     prediction.draw === maxPercentage
                       ? "text-gold-400"
                       : "text-gray-400"
@@ -206,26 +216,26 @@ export default function ResultsContent(): React.JSX.Element {
 
           {/* Away Win */}
           <div>
-            <div className="flex justify-between items-center mb-2">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center shadow-lg border border-gold-500/50">
+            <div className="flex justify-between items-center mb-2 gap-2">
+              <div className="flex items-center gap-2 min-w-0 flex-1">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-black rounded-lg flex items-center justify-center shadow-lg border border-gold-500/50 shrink-0">
                   <svg
-                    className="w-5 h-5 text-gold-400"
+                    className="w-4 h-4 sm:w-5 sm:h-5 text-gold-400"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
                     <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
                   </svg>
                 </div>
-                <div>
-                  <span className="font-bold text-lg text-white">
+                <div className="min-w-0">
+                  <span className="font-bold text-sm sm:text-base md:text-lg text-white truncate block">
                     {awayTeam} Win
                   </span>
                 </div>
               </div>
-              <div className="text-right">
+              <div className="text-right shrink-0">
                 <span
-                  className={`font-black text-2xl ${
+                  className={`font-black text-lg sm:text-xl md:text-2xl ${
                     prediction.awayWin === maxPercentage
                       ? "text-gold-400"
                       : "text-gray-400"
@@ -249,10 +259,10 @@ export default function ResultsContent(): React.JSX.Element {
         </div>
 
         {/* Action Button */}
-        <div className="mt-6">
+        <div className="mt-5 sm:mt-6">
           <button
             onClick={() => router.push("/")}
-            className="luxury-button w-full text-base group"
+            className="luxury-button w-full text-sm sm:text-base group"
           >
             <span className="flex items-center justify-center gap-2">
               <span>New Prediction</span>
