@@ -100,7 +100,7 @@ export default function TeamSearch({
               className="luxury-dropdown-item group"
             >
               <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
-                <span className="text-2xl sm:text-3xl md:text-4xl filter drop-shadow-lg group-hover:scale-125 transition-transform duration-200 flex-shrink-0">
+                <span className="text-2xl sm:text-3xl md:text-4xl filter drop-shadow-lg group-hover:scale-125 transition-transform duration-200 shrink-0">
                   ⚽
                 </span>
                 <div className="flex-1 min-w-0">
@@ -108,7 +108,7 @@ export default function TeamSearch({
                     {team}
                   </span>
                 </div>
-                <span className="text-gold-500 opacity-0 group-hover:opacity-100 transition-opacity text-lg sm:text-xl flex-shrink-0">
+                <span className="text-gold-500 opacity-0 group-hover:opacity-100 transition-opacity text-lg sm:text-xl shrink-0">
                   →
                 </span>
               </div>
